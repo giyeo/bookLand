@@ -1,4 +1,4 @@
-package com.bookland.bookland.schema;
+package com.bookland.bookland.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
