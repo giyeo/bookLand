@@ -5,6 +5,7 @@ import com.bookland.bookland.repository.BookRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class BookService {
     @Autowired
     private ReservationService reservationService;
 
+    @Cacheable("getAllBooksCache")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
@@ -31,6 +33,7 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable("getBookByIdCache")
     public Book getBookById(Long id) {
         Book book = bookRepository.findById(id).orElse(null);
         if (book == null) {

@@ -1,0 +1,16 @@
+com\bookland\bookland\dto\ReviewDTO.class
+com\bookland\bookland\model\Book.class
+com\bookland\bookland\service\ReviewService.class
+com\bookland\bookland\controller\BookLandController.class
+com\bookland\bookland\repository\ReservationRepository.class
+com\bookland\bookland\repository\ReviewRepository.class
+com\bookland\bookland\model\Review.class
+com\bookland\bookland\repository\BookRepository.class
+com\bookland\bookland\repository\LibraryUserRepository.class
+com\bookland\bookland\BookLandApplication.class
+com\bookland\bookland\service\LibraryUserService.class
+com\bookland\bookland\dto\ListReviewDTO.class
+com\bookland\bookland\model\Reservation.class
+com\bookland\bookland\service\BookService.class
+com\bookland\bookland\model\LibraryUser.class
+com\bookland\bookland\service\ReservationService.class

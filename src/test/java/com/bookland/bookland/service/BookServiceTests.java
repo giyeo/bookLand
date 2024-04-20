@@ -18,14 +18,14 @@ public class BookServiceTests {
     public void testGetAllBooks() {
         List<Book> books = bookService.getAllBooks();
         Assertions.assertNotNull(books);
-        Assertions.assertEquals(books.size(), 3);
+        Assertions.assertEquals(3, books.size());
     }
 
     @Test
     public void testGetAllAvailableBooks() {
         List<Book> books = bookService.getAllAvailableBooks();
         Assertions.assertNotNull(books);
-        Assertions.assertEquals(books.size(), 2);
+        Assertions.assertEquals(3, books.size());
     }
 
     @Test

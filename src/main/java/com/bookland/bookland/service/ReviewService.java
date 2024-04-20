@@ -8,6 +8,8 @@ import com.bookland.bookland.repository.ReviewRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +28,7 @@ public class ReviewService {
     @Autowired
     private LibraryUserService libraryUserService;
 
+    @Cacheable(value = "getBookReviewsCache", key = "#id")
     public ListReviewDTO getBookReviews(Long id) {
         List<Review> reviews = reviewRepository.findByBookId(id);
         Book book = bookService.getBookById(id);
@@ -35,16 +38,17 @@ public class ReviewService {
         return new ListReviewDTO(book, reviews);
     }
 
-    public void addBookReview(Long bookID, Long userID, Review review) {
+    @CacheEvict(value = "getBookReviewsCache", key = "#id")
+    public void addBookReview(Long id, Long userID, Review review) {
 
         if (review == null)
             return ;
 
-        Book book = bookService.getBookById(bookID);
+        Book book = bookService.getBookById(id);
         if (book == null) {
             return ;
         }
-        review.setBookId(bookID);
+        review.setBookId(id);
 
         LibraryUser user = libraryUserService.getLibraryUser(userID);
         if (user == null) {

@@ -5,6 +5,7 @@ import com.bookland.bookland.repository.LibraryUserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,7 @@ public class LibraryUserService {
     @Autowired
     private LibraryUserRepository libraryUserRepository;
 
+    @Cacheable("getLibraryUserCache")
     public LibraryUser getLibraryUser(Long id) { return libraryUserRepository.findById(id).orElse(null); }
 
 }
