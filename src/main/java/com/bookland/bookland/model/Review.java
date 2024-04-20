@@ -1,13 +1,13 @@
-package com.bookland.bookland.entity;
+package com.bookland.bookland.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Reservation {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,11 +20,13 @@ public class Reservation {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    @Column(name = "reservation_date", nullable = false)
-    private LocalDate reservationDate;
+    @Column(nullable = false)
+    private int rating;
 
-    @Column(name = "return_date", nullable = false)
-    private LocalDate returnDate;
+    @Column(nullable = false, length = 1000)
+    private String comment;
+
+    @Column(name = "review_date", nullable = false)
+    private LocalDateTime reviewDate;
 
 }
-

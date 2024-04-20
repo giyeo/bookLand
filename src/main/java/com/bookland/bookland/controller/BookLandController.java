@@ -1,7 +1,8 @@
 package com.bookland.bookland.controller;
 
-import com.bookland.bookland.entity.Book;
-import com.bookland.bookland.entity.Review;
+import com.bookland.bookland.dto.ReviewDTO;
+import com.bookland.bookland.model.Book;
+import com.bookland.bookland.model.Review;
 import com.bookland.bookland.service.BookLandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +31,14 @@ public class BookLandController {
     }
 
     @GetMapping("/{id}/reviews")
-    public List<Review> getBookReviews(@PathVariable Long id) {
-        return bookService.getBookReviews(id);
+    public ReviewDTO getBookReviews(@PathVariable Long id) {
+        return new ReviewDTO(bookService.getBookReviews(id));
     }
 
-    @PostMapping("/{id}/reviews")
-    public void addBookReview(@PathVariable Long id, @RequestBody Review review) {
-        bookService.addBookReview(id, review);
+    @PostMapping("/{id}/reviews/{user_id}")
+    public void addBookReview(@PathVariable Long id,
+                              @PathVariable Long user_id,
+                              @RequestBody Review review) {
+        bookService.addBookReview(id, user_id, review);
     }
 }
