@@ -16,9 +16,8 @@ public class Review {
     @JoinColumn(name = "user_id", nullable = false)
     private LibraryUser user;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    @Column(name = "book_id", nullable = false)
+    private Long bookId;
 
     @Column(nullable = false)
     private int rating;

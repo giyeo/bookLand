@@ -24,7 +24,4 @@ public class Book {
 
     @Column(name = "publication_year", nullable = false)
     private int publicationYear;
-
-    @Column(nullable = false)
-    private boolean availability;
 }
